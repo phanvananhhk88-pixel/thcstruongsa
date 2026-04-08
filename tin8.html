@@ -3,46 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiểm tra Tin học 8 - Giữa học kỳ II</title>
+    <title>Ngân hàng câu hỏi Tin học 8 - Cập nhật mới nhất</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg-color: #f1f5f9; --surface: #ffffff; --text-main: #0f172a; --border: #cbd5e1; --success: #10b981; --danger: #ef4444; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; line-height: 1.6; }
-        .exam-layout { max-width: 1100px; margin: 0 auto; display: flex; gap: 20px; }
-        .exam-main { flex: 1; }
-        .exam-sidebar { width: 300px; position: sticky; top: 20px; height: fit-content; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; }
+        .exam-layout { max-width: 1200px; margin: 0 auto; display: flex; gap: 25px; align-items: flex-start; }
+        .exam-main { flex: 1; min-width: 0; }
+        .exam-sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 20px; }
         
-        /* Header style */
-        .classic-header { background: white; border: 1px solid var(--border); padding: 20px; margin-bottom: 20px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
-        .header-info h2 { margin: 0; color: var(--primary); font-size: 20px; }
+        /* Header */
+        .classic-header { background: white; border: 1px solid var(--border); margin-bottom: 25px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 15px; }
+        .school-info { font-weight: bold; text-transform: uppercase; color: var(--primary); font-size: 18px; }
         
-        /* Question cards */
-        .section-title { background: var(--primary); color: white; padding: 10px 20px; border-radius: 6px; margin: 20px 0; font-weight: bold; text-transform: uppercase; }
-        .question-card { background: white; padding: 20px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 15px; transition: all 0.3s; }
-        .question-card:hover { border-color: var(--primary); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        .q-text { font-weight: 600; margin-bottom: 15px; }
-        .q-text span { color: var(--primary); margin-right: 5px; }
+        /* Question Style */
+        .section-title { font-size: 18px; font-weight: bold; color: white; background: var(--primary); padding: 12px 25px; border-radius: 8px; margin: 30px 0 20px 0; text-transform: uppercase; display: inline-block; }
+        .question-card { background: var(--surface); padding: 25px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid var(--border); transition: 0.3s; scroll-margin-top: 20px; }
+        .question-card:hover { border-color: var(--primary); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .q-text { font-size: 16px; font-weight: 600; margin-bottom: 20px; line-height: 1.6; }
+        .q-text span { color: var(--primary); background: #eff6ff; padding: 2px 10px; border-radius: 4px; margin-right: 10px; }
         
         /* Options */
-        .options-grid { display: grid; gap: 10px; }
-        .option-item { display: flex; align-items: center; padding: 10px; border: 1px solid #e2e8f0; border-radius: 6px; cursor: pointer; }
-        .option-item:hover { background: #f8fafc; }
-        .option-item input { margin-right: 10px; cursor: pointer; }
+        .mcq-options { display: grid; gap: 12px; }
+        .mcq-option { display: flex; align-items: center; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; background: #f8fafc; font-size: 15px; }
+        .mcq-option:hover { background: #eff6ff; border-color: var(--primary); }
+        .mcq-option input { margin-right: 15px; transform: scale(1.3); cursor: pointer; }
 
-        /* Essay box */
-        .essay-input { width: 100%; min-height: 150px; border: 1px solid var(--border); border-radius: 6px; padding: 10px; font-family: inherit; resize: vertical; }
+        /* Essay Area */
+        .essay-box { width: 100%; min-height: 150px; padding: 15px; border: 1px solid var(--border); border-radius: 8px; font-size: 15px; font-family: inherit; resize: vertical; outline: none; transition: 0.3s; }
+        .essay-box:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
 
-        /* Sidebar components */
-        .sidebar-card { background: white; padding: 20px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px; }
-        .timer { font-size: 32px; font-weight: bold; text-align: center; color: var(--danger); font-family: monospace; }
-        .palette { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
-        .pal-item { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 14px; }
-        .pal-item.done { background: var(--primary); color: white; border-color: var(--primary); }
+        /* Sidebar UI */
+        .sidebar-box { background: var(--surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .timer-display { background: #fef2f2; color: var(--danger); padding: 15px; border-radius: 8px; font-size: 32px; font-weight: bold; text-align: center; font-family: 'Courier New', Courier, monospace; border: 1px solid #fee2e2; }
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 15px; }
+        .pal-btn { aspect-ratio: 1; border: 1px solid var(--border); background: var(--surface); border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; }
+        .pal-btn.done { background: var(--primary); color: white; border-color: var(--primary); }
+        .pal-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .pal-btn.done:hover { color: white; opacity: 0.9; }
         
-        .btn-submit { width: 100%; background: var(--success); color: white; border: none; padding: 15px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; }
-        .btn-submit:hover { opacity: 0.9; }
+        .btn-submit { width: 100%; background: var(--success); color: white; border: none; padding: 18px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .btn-submit:hover { filter: brightness(1.1); transform: translateY(-2px); }
 
-        @media (max-width: 768px) { .exam-layout { flex-direction: column; } .exam-sidebar { width: 100%; position: static; } }
+        @media (max-width: 900px) { .exam-layout { flex-direction: column; } .exam-sidebar { width: 100%; position: static; } }
     </style>
 </head>
 <body>
@@ -50,128 +54,119 @@
 <div class="exam-layout">
     <div class="exam-main">
         <div class="classic-header">
-            <div class="header-info">
-                <h2>KIỂM TRA GIỮA HỌC KỲ II</h2>
-                <div>Môn: Tin học 8 | Năm học: 2023 - 2024</div>
+            <div class="header-top">
+                <div class="school-info">Ngân hàng câu hỏi Tin học 8</div>
+                <div style="text-align: right; font-weight: bold;">GIỮA HỌC KỲ II</div>
             </div>
-            <div style="text-align: right; font-style: italic;">
-                Thời gian: 45 phút
+            <div style="display: flex; gap: 30px; font-size: 15px; color: #475569;">
+                <span>Học sinh: ............................................................</span>
+                <span>Lớp: .................</span>
             </div>
         </div>
 
-        <div class="section-title">Phần I: Trắc nghiệm (3.0 điểm)</div>
-        <div id="mcq-container"></div>
-
-        <div class="section-title">Phần II: Tự luận (7.0 điểm)</div>
-        <div id="essay-container"></div>
+        <div id="quiz-content">
+            </div>
     </div>
 
     <div class="exam-sidebar">
-        <div class="sidebar-card">
-            <div style="text-align:center; font-size:14px; color:#64748b; margin-bottom:5px;">Thời gian còn lại</div>
-            <div class="timer" id="timer">45:00</div>
+        <div class="sidebar-box">
+            <div style="text-align:center; font-size:13px; font-weight:bold; color:#64748b; margin-bottom:10px;">THỜI GIAN CÒN LẠI</div>
+            <div class="timer-display" id="timer">45:00</div>
         </div>
-
-        <div class="sidebar-card">
-            <div style="font-weight:bold; margin-bottom:15px;"><i class="fa-solid fa-th"></i> Danh sách câu hỏi</div>
-            <div class="palette" id="palette"></div>
+        <div class="sidebar-box">
+            <div style="font-weight:bold; margin-bottom:15px;"><i class="fa-solid fa-list-check"></i> TIẾN ĐỘ LÀM BÀI</div>
+            <div class="palette-grid" id="palette"></div>
         </div>
-
-        <button class="btn-submit" onclick="submitExam()">NỘP BÀI THI</button>
+        <button class="btn-submit" onclick="submitExam()">Nộp bài thi ngay</button>
     </div>
 </div>
 
 <script>
-    const mcqs = [
-        { q: "Đầu trang (Header) và chân trang (Footer) là vị trí nào của văn bản?", a: ["Phần nội dung chính", "Phần lề trên và lề dưới của trang", "Chỉ ở trang đầu tiên", "Phần chứa hình ảnh"], c: 1 },
-        { q: "Trong phần mềm trình chiếu, để đánh số trang ta sử dụng lệnh nào?", a: ["Insert / Slide Number", "Home / Numbering", "Design / Slide Size", "View / Notes Master"], c: 0 },
-        { q: "Bản mẫu (Template) trong phần mềm trình chiếu là gì?", a: ["Một tệp văn bản", "Bản thiết kế sẵn gồm bố cục, màu sắc, phông chữ", "Một hình ảnh nền", "Một video hướng dẫn"], c: 1 },
-        { q: "Lợi ích của việc sử dụng bản mẫu có sẵn là gì?", a: ["Không cần viết nội dung", "Tạo sự thống nhất và chuyên nghiệp nhanh chóng", "Làm máy tính chạy nhanh hơn", "Chống virus"], c: 1 },
-        { q: "Nhóm màu nóng (Đỏ, Cam, Vàng) mang lại cảm giác gì?", a: ["Lạnh lẽo", "Ấm áp, phấn chấn, gây chú ý", "Buồn bã", "Yên tĩnh"], c: 1 },
-        { q: "Thuật toán là gì?", a: ["Một dãy các bước để giải quyết vấn đề", "Một linh kiện máy tính", "Một ngôn ngữ lập trình", "Một trang web"], c: 0 },
-        { q: "Để vẽ tam giác đều trong Scratch, nhân vật cần quay một góc bao nhiêu độ?", a: ["60 độ", "90 độ", "120 độ", "180 độ"], c: 2 },
-        { q: "Kiểu dữ liệu Logic gồm những giá trị nào?", a: ["0 đến 9", "True và False", "Chữ cái A-Z", "Số thập phân"], c: 1 },
-        { q: "Biến (Variable) dùng để làm gì trong chương trình?", a: ["Đổi màu nhân vật", "Lưu trữ giá trị có thể thay đổi", "Phát âm thanh", "Kết thúc chương trình"], c: 1 },
-        { q: "Kết quả của phép so sánh '10 < 7' là gì?", a: ["True", "False", "3", "17"], c: 1 },
-        { q: "Trong Scratch, để thực hiện lặp lại một hành động nhiều lần ta dùng nhóm lệnh nào?", a: ["Chuyển động", "Sự kiện", "Điều khiển", "Các phép toán"], c: 2 },
-        { q: "Độ tương phản giữa màu chữ và màu nền trang chiếu có tác dụng gì?", a: ["Làm trang chiếu đẹp hơn", "Giúp người nghe dễ đọc nội dung", "Tiết kiệm mực in", "Giảm dung lượng file"], c: 1 }
-    ];
-
-    const essays = [
-        "Em hãy nêu ít nhất 4 nguyên tắc lựa chọn màu sắc phù hợp khi thiết kế trang chiếu để đảm bảo tính thẩm mỹ và dễ đọc.",
-        "Mô tả thuật toán bằng sơ đồ khối hoặc các bước liệt kê để nhân vật Scratch vẽ được một hình vuông có cạnh 100 bước."
-    ];
-
-    // Render Trắc nghiệm
-    const mcqBox = document.getElementById('mcq-container');
-    const palBox = document.getElementById('palette');
-    mcqs.forEach((item, i) => {
-        const div = document.createElement('div');
-        div.className = 'question-card';
-        div.id = `q-mcq-${i}`;
-        div.innerHTML = `
-            <div class="q-text"><span>Câu ${i+1}:</span> ${item.q}</div>
-            <div class="options-grid">
-                ${item.a.map((opt, idx) => `
-                    <label class="option-item">
-                        <input type="radio" name="q${i}" onchange="markDone(${i})">
-                        ${String.fromCharCode(65+idx)}. ${opt}
-                    </label>
-                `).join('')}
-            </div>
-        `;
-        mcqBox.appendChild(div);
+    // DỮ LIỆU CÂU HỎI ĐÃ ĐƯỢC CẬP NHẬT TỪ FILE DOCX VÀ HTML CỦA BẠN
+    const database = [
+        // TRẮC NGHIỆM (Dựa trên file ÔN TẬP 1.docx)
+        { type: "mcq", q: "Đầu trang (Header) và chân trang (Footer) là gì?", options: ["Phần nội dung chính của văn bản", "Phần nằm ở giữa trang văn bản", "Phần chứa hình ảnh trong văn bản", "Phần nằm ở lề trên và lề dưới của trang"], c: 3 },
+        { type: "mcq", q: "Đầu trang và chân trang thường dùng để làm gì?", options: ["Viết nội dung chính của bài", "Chứa thông tin như số trang, tên tài liệu, tác giả", "Chèn bảng biểu lớn", "Thay đổi màu nền văn bản"], c: 1 },
+        { type: "mcq", q: "Đặc điểm của văn bản trên trang chiếu là gì?", options: ["Dài, chi tiết, đầy đủ nội dung", "Ngắn gọn, súc tích, nêu ý chính", "Chỉ gồm hình ảnh, không có chữ", "Không cần nội dung"], c: 1 },
+        { type: "mcq", q: "Khi thiết kế trang chiếu, nên sử dụng màu sắc như thế nào?", options: ["Càng nhiều màu rực rỡ càng tốt", "Kết hợp màu sắc hài hòa, phù hợp nội dung", "Chỉ dùng một màu duy nhất", "Dùng màu tùy ý không cần chú ý"], c: 1 },
+        { type: "mcq", q: "Phần mềm trình chiếu có cho phép đánh số trang không?", options: ["Không cho phép", "Chỉ trang đầu tiên", "Cho phép đánh số trang tự động", "Chỉ đánh số trang chẵn"], c: 2 },
+        { type: "mcq", q: "Bản mẫu (Template) trong phần mềm trình chiếu là gì?", options: ["Một tệp văn bản thô", "Một bản thiết kế sẵn gồm bố cục, màu sắc, phông chữ", "Một video minh họa", "Một hình nền đơn lẻ"], c: 1 },
+        { type: "mcq", q: "Sử dụng bản mẫu có lợi ích gì?", options: ["Máy tính chạy nhanh hơn", "Không cần soạn nội dung", "Tiết kiệm thời gian và tạo tính chuyên nghiệp", "Bảo mật thông tin tốt hơn"], c: 2 },
+        { type: "mcq", q: "Để chọn bản mẫu trong PowerPoint, em vào thẻ nào?", options: ["Home", "Insert", "Design (hoặc File > New)", "Review"], c: 2 },
+        { type: "mcq", q: "Nhóm màu nóng (Đỏ, Cam, Vàng) mang lại cảm giác gì?", options: ["Lạnh lẽo, xa cách", "Ấm áp, phấn chấn, gây chú ý", "Buồn bã, yên tĩnh", "Trung tính"], c: 1 },
+        { type: "mcq", q: "Theo nguyên tắc phối màu, màu chữ và màu nền nên như thế nào?", options: ["Càng giống nhau càng tốt", "Phải tương phản để dễ đọc", "Luôn là màu trắng và đen", "Không quan trọng"], c: 1 },
+        { type: "mcq", q: "Thuật toán là gì?", options: ["Một trò chơi điện tử", "Dãy các bước cụ thể để giải quyết một vấn đề", "Một thiết bị máy tính", "Một loại tệp tin"], c: 1 },
+        { type: "mcq", q: "Trong Scratch, để vẽ một hình tam giác đều, nhân vật cần quay một góc bao nhiêu độ?", options: ["60 độ", "90 độ", "120 độ", "180 độ"], c: 2 },
+        { type: "mcq", q: "Cấu trúc lặp 'Repeat' trong Scratch dùng để làm gì?", options: ["Dừng chương trình", "Thực hiện một nhóm lệnh nhiều lần", "Kiểm tra điều kiện đúng/sai", "Xóa nhân vật"], c: 1 },
+        { type: "mcq", q: "Kiểu dữ liệu Logic gồm những giá trị nào?", options: ["0 đến 9", "True (Đúng) và False (Sai)", "Các chữ cái A-Z", "Số nguyên và thập phân"], c: 1 },
+        { type: "mcq", q: "Biến (Variable) dùng để làm gì?", options: ["Trang trí chương trình", "Lưu trữ giá trị có thể thay đổi khi chạy chương trình", "Vẽ hình tròn", "Kết thúc lệnh"], c: 1 },
+        { type: "mcq", q: "Kết quả của phép so sánh '10 < 7' là gì?", options: ["True", "False", "10", "7"], c: 1 },
+        { type: "mcq", q: "Để tạo một biến mới trong Scratch, em chọn nhóm lệnh nào?", options: ["Motion", "Events", "Variables", "Control"], c: 2 },
+        { type: "mcq", q: "Chương trình máy tính là gì?", options: ["Một bài hát", "Dãy các lệnh điều khiển máy tính thực hiện thuật toán", "Một bộ phận phần cứng", "Một đoạn phim"], c: 1 },
+        { type: "mcq", q: "Trong Scratch, nhóm lệnh 'Control' thường chứa các lệnh nào?", options: ["Di chuyển, xoay", "Lặp, nếu...thì", "Phép cộng, phép nhân", "Đổi màu nền"], c: 1 },
+        { type: "mcq", q: "Độ dài bước di chuyển trong Scratch quyết định điều gì?", options: ["Màu sắc hình vẽ", "Kích thước của hình vẽ", "Tốc độ của máy tính", "Âm thanh phát ra"], c: 1 },
         
-        const pBtn = document.createElement('div');
-        pBtn.className = 'pal-item';
-        pBtn.id = `pal-${i}`;
-        pBtn.innerText = i + 1;
-        pBtn.onclick = () => div.scrollIntoView({behavior: "smooth", block: "center"});
-        palBox.appendChild(pBtn);
-    });
+        // TỰ LUẬN
+        { type: "essay", q: "Em hãy nêu 4 nguyên tắc lựa chọn màu sắc phù hợp khi thiết kế trang chiếu để đảm bảo tính thẩm mỹ và dễ đọc." },
+        { type: "essay", q: "Mô tả thuật toán để nhân vật Scratch vẽ một hình vuông có độ dài cạnh là 100 bước (sử dụng cấu trúc lặp)." }
+    ];
 
-    // Render Tự luận
-    const essayBox = document.getElementById('essay-container');
-    essays.forEach((item, i) => {
-        const idx = mcqs.length + i;
-        const div = document.createElement('div');
-        div.className = 'question-card';
-        div.innerHTML = `
-            <div class="q-text"><span>Câu ${idx+1}:</span> ${item}</div>
-            <textarea class="essay-input" placeholder="Nhập câu trả lời của em tại đây..." oninput="markDone(${idx})"></textarea>
-        `;
-        essayBox.appendChild(div);
+    function renderExam() {
+        const quizContainer = document.getElementById('quiz-content');
+        const palette = document.getElementById('palette');
+        let html = '<div class="section-title">Phần I: Trắc nghiệm</div>';
 
-        const pBtn = document.createElement('div');
-        pBtn.className = 'pal-item';
-        pBtn.id = `pal-${idx}`;
-        pBtn.innerText = idx + 1;
-        pBtn.onclick = () => div.scrollIntoView({behavior: "smooth", block: "center"});
-        palBox.appendChild(pBtn);
-    });
+        database.forEach((item, i) => {
+            if (i === 20) html += '<br><div class="section-title">Phần II: Tự luận</div>';
+            
+            html += `<div class="question-card" id="q-${i}">
+                <div class="q-text"><span>Câu ${i+1}</span> ${item.q}</div>`;
+            
+            if (item.type === "mcq") {
+                html += `<div class="mcq-options">`;
+                item.options.forEach((opt, idx) => {
+                    html += `<label class="mcq-option">
+                        <input type="radio" name="question_${i}" onchange="markPalette(${i})">
+                        ${String.fromCharCode(65+idx)}. ${opt}
+                    </label>`;
+                });
+                html += `</div>`;
+            } else {
+                html += `<textarea class="essay-box" placeholder="Nhập câu trả lời của em tại đây..." oninput="markPalette(${i})"></textarea>`;
+            }
+            html += `</div>`;
 
-    function markDone(id) {
-        document.getElementById(`pal-${id}`).classList.add('done');
+            // Palette
+            palette.innerHTML += `<div class="pal-btn" id="pal-${i}" onclick="document.getElementById('q-${i}').scrollIntoView({behavior:'smooth', block:'center'})">${i+1}</div>`;
+        });
+        quizContainer.innerHTML = html;
     }
 
-    // Timer
-    let time = 45 * 60;
-    const timerEl = document.getElementById('timer');
+    function markPalette(index) {
+        document.getElementById(`pal-${index}`).classList.add('done');
+    }
+
+    // TIMER
+    let totalTime = 45 * 60;
+    const timerDisplay = document.getElementById('timer');
     const countdown = setInterval(() => {
-        time--;
-        let m = Math.floor(time / 60);
-        let s = time % 60;
-        timerEl.innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
-        if (time <= 0) {
+        totalTime--;
+        let m = Math.floor(totalTime / 60);
+        let s = totalTime % 60;
+        timerDisplay.innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+        if (totalTime <= 0) {
             clearInterval(countdown);
+            alert("Hết giờ làm bài! Hệ thống sẽ tự động nộp bài.");
             submitExam();
         }
     }, 1000);
 
     function submitExam() {
-        alert("Cảm ơn em đã hoàn thành bài thi! Kết quả của em đã được gửi lên hệ thống.");
-        window.location.reload();
+        alert("Chúc mừng em đã hoàn thành bài thi! Bài làm đã được ghi nhận.");
+        location.reload();
     }
+
+    window.onload = renderExam;
 </script>
 
 </body>
