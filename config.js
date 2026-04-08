@@ -13,7 +13,7 @@ const CONFIG = {
     SCHOOL_YEAR: "2025-2026",
     
     // Khai báo tên trường (Đã sửa thành viết hoa SCHOOL_NAME)
-    SCHOOL_NAME: "THCS Lê Quý Đôn"
+    SCHOOL_NAME: "THCS Trường Sa"
 };
 
 // ==========================================
