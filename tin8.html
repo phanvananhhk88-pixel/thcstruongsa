@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiểm tra Tin học 8 - Giữa học kỳ II</title>
+    <title>Ôn tập Tin học 8 - Giữa học kỳ II</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg-color: #f1f5f9; --surface: #ffffff; --text-main: #0f172a; --border: #cbd5e1; --success: #10b981; --danger: #ef4444; }
@@ -11,30 +11,24 @@
         .exam-layout { max-width: 1200px; margin: 0 auto; display: flex; gap: 25px; align-items: flex-start; }
         .exam-main { flex: 1; min-width: 0; }
         .exam-sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 20px; }
-        
-        .classic-header { background: white; border: 1px solid var(--border); margin-bottom: 25px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 15px; }
-        .school-info { font-weight: bold; text-transform: uppercase; color: var(--primary); font-size: 18px; }
-        
+        .classic-header { background: white; border: 1px solid var(--border); margin-bottom: 25px; padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 10px; margin-bottom: 15px; }
+        .school-info { font-weight: bold; text-transform: uppercase; color: var(--primary); }
         .section-title { font-size: 16px; font-weight: bold; color: white; background: var(--primary); padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; text-transform: uppercase; }
-        .question-card { background: var(--surface); padding: 25px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid var(--border); transition: 0.2s ease; scroll-margin-top: 20px; }
+        .question-card { background: var(--surface); padding: 25px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid var(--border); scroll-margin-top: 20px; }
         .question-text { font-size: 16px; font-weight: 600; margin-bottom: 15px; }
-        .question-text span { color: var(--primary); margin-right: 8px; }
-        
+        .question-text span { color: var(--primary); margin-right: 5px; }
         .mcq-options { display: grid; gap: 10px; }
         .mcq-option { display: flex; align-items: center; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; background: #f8fafc; }
         .mcq-option:hover { background: #eff6ff; border-color: #bfdbfe; }
         .mcq-option input { margin-right: 12px; transform: scale(1.2); }
-
-        .essay-box { width: 100%; min-height: 150px; padding: 15px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 15px; resize: vertical; }
-
         .sidebar-box { background: var(--surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
         .timer-display { background: #eff6ff; color: var(--danger); padding: 15px; border-radius: 8px; font-size: 32px; font-weight: bold; text-align: center; font-family: monospace; }
         .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
         .palette-btn { aspect-ratio: 1; border: 1px solid var(--border); background: var(--surface); border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; }
         .palette-btn.answered { background: var(--primary); color: white; border-color: var(--primary); }
-        
         .btn-submit { width: 100%; background: var(--success); color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
+        @media (max-width: 900px) { .exam-layout { flex-direction: column; } .exam-sidebar { width: 100%; position: static; } }
     </style>
 </head>
 <body>
@@ -43,12 +37,11 @@
     <div class="exam-main">
         <div class="classic-header">
             <div class="header-top">
-                <div class="school-info">Ngân hàng đề thi Tin học 8</div>
-                <div style="text-align: right;"><strong>KIỂM TRA GIỮA KỲ II</strong></div>
+                <div class="school-info">NGÂN HÀNG CÂU HỎI TIN HỌC 8</div>
+                <div><strong>ÔN TẬP GIỮA KỲ II</strong></div>
             </div>
-            <div style="margin-top: 10px;">Họ tên: .................................................... Lớp: .........</div>
+            <div>Họ và tên: ............................................................ Lớp: ............</div>
         </div>
-
         <div id="quiz-container"></div>
     </div>
 
@@ -58,15 +51,14 @@
             <div class="timer-display" id="timer">45:00</div>
         </div>
         <div class="sidebar-box">
-            <div style="font-weight:bold; margin-bottom:15px;"><i class="fa-solid fa-table-cells-large"></i> TIẾN ĐỘ</div>
+            <div style="font-weight:bold; margin-bottom:15px;"><i class="fa-solid fa-list-check"></i> DANH SÁCH CÂU HỎI</div>
             <div class="palette-grid" id="palette-container"></div>
         </div>
-        <button class="btn-submit" onclick="submitExam()">Nộp bài</button>
+        <button class="btn-submit" onclick="alert('Hệ thống đã ghi nhận bài làm của bạn!')">Nộp bài ôn tập</button>
     </div>
 </div>
 
 <script>
-    // NGÂN HÀNG 56 CÂU HỎI TỪ FILE ÔN TẬP (1).DOCX
     const mcqBank = [
         { q: "Đầu trang (Header) và chân trang (Footer) là gì?", options: ["Phần nội dung chính của văn bản", "Phần nằm ở giữa trang văn bản", "Phần chứa hình ảnh trong văn bản", "Phần nằm ở lề trên và lề dưới của văn bản"], correct: 3 },
         { q: "Đầu trang và chân trang thường dùng để làm gì?", options: ["Viết nội dung chính của bài", "Chứa thông tin ngắn gọn như số trang, tên tài liệu", "Chèn bảng biểu trong văn bản", "Thay đổi màu nền của văn bản"], correct: 1 },
@@ -128,12 +120,12 @@
 
     function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
 
-    function renderQuiz() {
+    function initExam() {
         const container = document.getElementById('quiz-container');
         const palette = document.getElementById('palette-container');
-        const selectedMcq = shuffle([...mcqBank]).slice(0, 12); // Bốc ngẫu nhiên 12 câu làm bài kiểm tra
+        const selectedMcq = shuffle([...mcqBank]).slice(0, 12); // Bốc ngẫu nhiên 12 câu
         
-        let html = `<div class="section-title">I. Trắc nghiệm (3.0 điểm)</div>`;
+        let html = `<div class="section-title">PHẦN TRẮC NGHIỆM</div>`;
         selectedMcq.forEach((q, i) => {
             html += `
             <div class="question-card" id="q-${i+1}">
@@ -143,44 +135,25 @@
                 html += `
                 <label class="mcq-option">
                     <input type="radio" name="mcq_${i}" onchange="document.getElementById('pal-${i+1}').classList.add('answered')">
-                    ${String.fromCharCode(65+idx)}. ${opt}
+                    <b>${String.fromCharCode(65+idx)}.</b> &nbsp;${opt}
                 </label>`;
             });
             html += `</div></div>`;
             palette.innerHTML += `<div class="palette-btn" id="pal-${i+1}" onclick="document.getElementById('q-${i+1}').scrollIntoView({behavior:'smooth', block:'center'})">${i+1}</div>`;
         });
-
-        html += `<div class="section-title">II. Tự luận (7.0 điểm)</div>
-            <div class="question-card" id="q-13">
-                <div class="question-text"><span>Câu 13:</span> Em hãy trình bày sự khác biệt giữa biến và hằng. Cho ví dụ minh họa về một hằng số em đã học trong chương trình Tin học 8.</div>
-                <textarea class="essay-box" placeholder="Nhập câu trả lời..."></textarea>
-            </div>
-            <div class="question-card" id="q-14">
-                <div class="question-text"><span>Câu 14:</span> Bạn An muốn vẽ một hình vuông cạnh 100 bước trong Scratch. Em hãy giúp An mô tả thuật toán bằng cách liệt kê các bước cụ thể sử dụng cấu trúc lặp.</div>
-                <textarea class="essay-box" placeholder="Nhập câu trả lời..."></textarea>
-            </div>`;
-        
-        palette.innerHTML += `<div class="palette-btn" id="pal-13" onclick="document.getElementById('q-13').scrollIntoView()">13</div>`;
-        palette.innerHTML += `<div class="palette-btn" id="pal-14" onclick="document.getElementById('q-14').scrollIntoView()">14</div>`;
-
         container.innerHTML = html;
     }
 
-    let timeLeft = 45 * 60;
+    let time = 45 * 60;
     setInterval(() => {
-        if(timeLeft <= 0) return;
-        timeLeft--;
-        let m = Math.floor(timeLeft/60);
-        let s = timeLeft%60;
+        if(time <= 0) return;
+        time--;
+        let m = Math.floor(time/60);
+        let s = time%60;
         document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
     }, 1000);
 
-    function submitExam() {
-        alert("Bài thi của bạn đã được gửi thành công!");
-        location.reload();
-    }
-
-    window.onload = renderQuiz;
+    window.onload = initExam;
 </script>
 </body>
 </html>
