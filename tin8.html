@@ -3,40 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đề kiểm tra giữa học kỳ II - Tin học 8</title>
+    <title>Kiểm tra Tin học 8 - Giữa học kỳ II</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg-color: #f1f5f9; --surface: #ffffff; --text-main: #0f172a; --border: #cbd5e1; --success: #10b981; --warning: #f59e0b; --danger: #ef4444; }
-        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; }
+        :root { --primary: #2563eb; --primary-hover: #1d4ed8; --bg-color: #f1f5f9; --surface: #ffffff; --text-main: #0f172a; --border: #cbd5e1; --success: #10b981; --danger: #ef4444; }
+        body { font-family: 'Segoe UI', Roboto, sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; line-height: 1.6; }
         .exam-layout { max-width: 1200px; margin: 0 auto; display: flex; gap: 25px; align-items: flex-start; }
         .exam-main { flex: 1; min-width: 0; }
-        .exam-sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 20px; z-index: 100; }
-        .classic-header { background: white; border: 1px solid var(--border); margin-bottom: 25px; font-family: 'Times New Roman', Times, serif; color: #000; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .classic-header-top { display: flex; flex-wrap: wrap; }
-        .classic-left { flex: 1.3; min-width: 300px; padding: 20px 25px; border-right: 1px solid var(--border); display: flex; flex-direction: column; gap: 18px; }
-        .classic-right { flex: 1; min-width: 250px; padding: 20px; text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-        .classic-header-bottom { border-top: 1px solid var(--border); padding: 12px; text-align: center; font-style: italic; color: #475569; font-size: 16px; }
-        .info-line { display: flex; align-items: flex-end; gap: 8px; white-space: nowrap; font-size: 18px; font-weight: bold; }
-        .dotted-line { border-bottom: 2px dotted #000; flex: 1; color: var(--primary); font-weight: bold; padding: 0 10px; text-align: center; line-height: 1.2; font-size: 18px;}
-        .section-title { font-size: 16px; font-weight: bold; color: var(--surface); background: var(--primary); padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; text-transform: uppercase; }
+        .exam-sidebar { width: 320px; flex-shrink: 0; position: sticky; top: 20px; display: flex; flex-direction: column; gap: 20px; }
+        
+        .classic-header { background: white; border: 1px solid var(--border); margin-bottom: 25px; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .header-top { display: flex; justify-content: space-between; border-bottom: 2px solid var(--primary); padding-bottom: 15px; margin-bottom: 15px; }
+        .school-info { font-weight: bold; text-transform: uppercase; color: var(--primary); font-size: 18px; }
+        
+        .section-title { font-size: 16px; font-weight: bold; color: white; background: var(--primary); padding: 12px 20px; border-radius: 8px; margin-bottom: 20px; text-transform: uppercase; }
         .question-card { background: var(--surface); padding: 25px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid var(--border); transition: 0.2s ease; scroll-margin-top: 20px; }
-        .question-text { font-size: 16px; font-weight: 600; margin-bottom: 15px; line-height: 1.5; white-space: pre-wrap;}
-        .question-text span { color: var(--primary); }
+        .question-text { font-size: 16px; font-weight: 600; margin-bottom: 15px; }
+        .question-text span { color: var(--primary); margin-right: 8px; }
+        
         .mcq-options { display: grid; gap: 10px; }
-        .grid-2 { grid-template-columns: repeat(2, 1fr); }
-        .mcq-option { display: flex; align-items: center; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; background: #f8fafc; font-size: 15px;}
+        .mcq-option { display: flex; align-items: center; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; transition: 0.2s; background: #f8fafc; }
         .mcq-option:hover { background: #eff6ff; border-color: #bfdbfe; }
-        .tf-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .tf-table th, .tf-table td { border: 1px solid var(--border); padding: 12px; text-align: center; }
-        .tf-table .tf-text { text-align: left; font-size: 15px; }
-        .essay-box { width: 100%; min-height: 150px; padding: 15px; font-size: 15px; border: 1px solid var(--border); border-radius: 8px; outline: none; }
-        .sidebar-box { background: var(--surface); padding: 20px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border); }
-        .timer-display { background: #eff6ff; color: var(--danger); padding: 15px; border-radius: 8px; font-size: 32px; font-weight: bold; text-align: center; border: 2px solid #bfdbfe; font-family: monospace; }
-        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 15px; }
-        .palette-btn { aspect-ratio: 1; border: 1px solid var(--border); background: var(--surface); border-radius: 6px; font-weight: 600; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+        .mcq-option input { margin-right: 12px; transform: scale(1.2); }
+
+        .essay-box { width: 100%; min-height: 150px; padding: 15px; border: 1px solid var(--border); border-radius: 8px; font-family: inherit; font-size: 15px; resize: vertical; }
+
+        .sidebar-box { background: var(--surface); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
+        .timer-display { background: #eff6ff; color: var(--danger); padding: 15px; border-radius: 8px; font-size: 32px; font-weight: bold; text-align: center; font-family: monospace; }
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+        .palette-btn { aspect-ratio: 1; border: 1px solid var(--border); background: var(--surface); border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; }
         .palette-btn.answered { background: var(--primary); color: white; border-color: var(--primary); }
+        
         .btn-submit { width: 100%; background: var(--success); color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; text-transform: uppercase; }
-        @media (max-width: 900px) { .exam-layout { flex-direction: column; } .exam-sidebar { width: 100%; position: static; } .grid-2 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -44,18 +42,13 @@
 <div class="exam-layout">
     <div class="exam-main">
         <div class="classic-header">
-            <div class="classic-header-top">
-                <div class="classic-left">
-                    <div class="info-line">TRƯỜNG <span class="dotted-line">THCS NGUYỄN DU</span></div>
-                    <div class="info-line">Họ và tên: <span class="dotted-line">........................................</span> Lớp <span class="dotted-line" style="flex:0.3">8...</span></div>
-                </div>
-                <div class="classic-right">
-                    <div style="font-weight: bold; font-size: 18px; text-transform: uppercase;">ĐỀ KIỂM TRA GIỮA HỌC KỲ II</div>
-                    <div style="font-weight: bold; font-size: 18px; color: var(--primary);">MÔN: TIN HỌC 8</div>
-                </div>
+            <div class="header-top">
+                <div class="school-info">Ngân hàng đề thi Tin học 8</div>
+                <div style="text-align: right;"><strong>KIỂM TRA GIỮA KỲ II</strong></div>
             </div>
-            <div class="classic-header-bottom">Thời gian làm bài: 45 phút</div>
+            <div style="margin-top: 10px;">Họ tên: .................................................... Lớp: .........</div>
         </div>
+
         <div id="quiz-container"></div>
     </div>
 
@@ -65,84 +58,129 @@
             <div class="timer-display" id="timer">45:00</div>
         </div>
         <div class="sidebar-box">
-            <div style="font-weight:bold; margin-bottom:15px;"><i class="fa-solid fa-table-cells-large"></i> BẢNG CÂU HỎI</div>
+            <div style="font-weight:bold; margin-bottom:15px;"><i class="fa-solid fa-table-cells-large"></i> TIẾN ĐỘ</div>
             <div class="palette-grid" id="palette-container"></div>
         </div>
-        <button class="btn-submit" onclick="alert('Hệ thống đã ghi nhận bài làm của bạn!')">Nộp bài thi</button>
+        <button class="btn-submit" onclick="submitExam()">Nộp bài</button>
     </div>
 </div>
 
 <script>
-    // NGÂN HÀNG 56 CÂU HỎI TỪ FILE ÔN TẬP
+    // NGÂN HÀNG 56 CÂU HỎI TỪ FILE ÔN TẬP (1).DOCX
     const mcqBank = [
         { q: "Đầu trang (Header) và chân trang (Footer) là gì?", options: ["Phần nội dung chính của văn bản", "Phần nằm ở giữa trang văn bản", "Phần chứa hình ảnh trong văn bản", "Phần nằm ở lề trên và lề dưới của văn bản"], correct: 3 },
         { q: "Đầu trang và chân trang thường dùng để làm gì?", options: ["Viết nội dung chính của bài", "Chứa thông tin ngắn gọn như số trang, tên tài liệu", "Chèn bảng biểu trong văn bản", "Thay đổi màu nền của văn bản"], correct: 1 },
         { q: "Đặc điểm của văn bản trên trang chiếu là gì?", options: ["Dài, chi tiết, đầy đủ nội dung", "Ngắn gọn, súc tích, nêu ý chính", "Chỉ gồm hình ảnh", "Không cần nội dung"], correct: 1 },
         { q: "Khi thiết kế trang chiếu, nên sử dụng màu sắc như thế nào?", options: ["Càng nhiều màu càng tốt", "Kết hợp màu sắc hài hòa, phù hợp nội dung", "Chỉ dùng một màu duy nhất", "Dùng màu tùy ý, không cần chú ý"], correct: 1 },
         { q: "Phần mềm trình chiếu có cho phép đánh số trang không?", options: ["Không cho phép", "Chỉ trang đầu tiên", "Cho phép đánh số trang", "Chỉ đánh số trang chẵn"], correct: 2 },
+        { q: "Trong phần mềm trình chiếu, có thể thêm những thành phần nào vào trang chiếu?", options: ["Chỉ hình ảnh", "Chỉ văn bản", "Đầu trang, chân trang và số trang", "Chỉ bảng biểu"], correct: 2 },
         { q: "Bản mẫu (Template) trong phần mềm trình chiếu là gì?", options: ["Một trang chiếu đơn lẻ", "Một hình ảnh nền", "Một đoạn văn bản", "Một bản thiết kế gồm bố cục, màu sắc, phông chữ, hiệu ứng"], correct: 3 },
         { q: "Khi sử dụng bản mẫu có sẵn, em có thể làm gì?", options: ["Không thể chỉnh sửa", "Chỉ xem mà không thay đổi", "Chỉnh sửa nội dung cho phù hợp", "Chỉ xóa bản mẫu"], correct: 2 },
         { q: "Chương trình là gì?", options: ["Một hình ảnh trong máy tính", "Một trò chơi", "Một tệp văn bản", "Một dãy các lệnh điều khiển máy tính thực hiện một thuật toán"], correct: 3 },
         { q: "Thuật toán là gì?", options: ["Một trò chơi trên máy tính", "Một dãy các bước để giải quyết một vấn đề", "Một phần mềm", "Một thiết bị"], correct: 1 },
+        { q: "Trong thuật toán vẽ tam giác đều, mỗi lần lặp gồm những hành động nào?", options: ["Vẽ hình tròn", "Di chuyển và quay góc", "Chèn hình ảnh", "Thay đổi màu nền"], correct: 1 },
         { q: "Khi vẽ tam giác đều, nhân vật cần quay góc bao nhiêu độ?", options: ["60 độ", "90 độ", "120 độ", "180 độ"], correct: 2 },
+        { q: "Tam giác đều có mấy cạnh?", options: ["2", "3", "4", "5"], correct: 1 },
+        { q: "Số lần lặp để vẽ tam giác đều là bao nhiêu?", options: ["2", "3", "4", "5"], correct: 1 },
         { q: "Lệnh “di chuyển 60 bước” trong Scratch dùng để làm gì?", options: ["Làm nhân vật biến mất", "Làm nhân vật di chuyển về phía trước", "Thay đổi màu nền", "Phát âm thanh"], correct: 1 },
+        { q: "Lệnh “xoay 120 độ” có tác dụng gì?", options: ["Làm nhân vật phóng to", "Làm nhân vật quay một góc 120 độ", "Làm nhân vật dừng lại", "Làm nhân vật biến mất"], correct: 1 },
         { q: "Khối lệnh “lặp lại 3” trong Scratch có ý nghĩa gì?", options: ["Thực hiện lệnh 1 lần", "Thực hiện lệnh 2 lần", "Thực hiện lệnh 3 lần", "Thực hiện vô hạn"], correct: 2 },
+        { q: "Để vẽ tam giác đều bằng Scratch, cần kết hợp các lệnh nào?", options: ["Di chuyển và xoay", "Phát âm thanh", "Thay đổi nền", "Hiển thị chữ"], correct: 0 },
+        { q: "Lệnh “khi bấm vào cờ xanh” có tác dụng gì?", options: ["Dừng chương trình", "Bắt đầu chạy chương trình", "Xóa chương trình", "Lưu chương trình"], correct: 1 },
+        { q: "Kiểu dữ liệu là gì?", options: ["Một lệnh trong chương trình", "Một tập hợp các giá trị mà dữ liệu có thể nhận", "Một phép toán", "Một biến"], correct: 1 },
+        { q: "Trong Scratch, kiểu dữ liệu số gồm những gì?", options: ["Chỉ số nguyên", "Chỉ số thập phân", "Số nguyên và số thập phân", "Chỉ số âm"], correct: 2 },
+        { q: "Kiểu dữ liệu xâu kí tự là gì?", options: ["Các số", "Các kí tự hoặc chuỗi kí tự", "Các phép toán", "Các điều kiện"], correct: 1 },
         { q: "Kiểu dữ liệu logic gồm những giá trị nào?", options: ["0 và 1", "True và False.", "Số nguyên", "Văn bản"], correct: 1 },
         { q: "Biến là gì?", options: ["Giá trị không thay đổi", "Giá trị luôn cố định", "Một phép toán", "Đại lượng dùng để lưu trữ giá trị có thể thay đổi"], correct: 3 },
+        { q: "Biến dùng để làm gì trong chương trình?", options: ["Trang trí chương trình", "Lưu trữ giá trị có thể thay đổi", "Vẽ hình", "Phát âm thanh"], correct: 1 },
+        { q: "Trong phép tính “3 + 5”, kết quả thuộc kiểu dữ liệu gì?", options: ["Xâu kí tự", "Logic", "Số", "Hình ảnh"], correct: 2 },
         { q: "Kết quả của phép so sánh “5 > 3” là gì?", options: ["8", "TRUE", "FALSE", "“5>3”"], correct: 1 },
+        { q: "Khi ghép hai chuỗi “Tin” và “học”, kết quả là gì?", options: ["Tin học", "0", "TRUE", "5"], correct: 0 },
+        { q: "Số trang trong văn bản thường được đặt ở đâu?", options: ["Trong nội dung chính của bài", "Ở đầu trang hoặc chân trang", "Chỉ ở giữa trang", "Chỉ ở cuối đoạn văn"], correct: 1 },
+        { q: "Đặc điểm của đầu trang và chân trang là gì?", options: ["Chỉ xuất hiện ở trang đầu tiên", "Không thể chỉnh sửa", "Chỉ dùng để chèn hình ảnh", "Tự động xuất hiện giống nhau ở tất cả các trang"], correct: 3 },
         { q: "Màu nóng như đỏ, cam, vàng thường mang lại cảm giác gì?", options: ["Lạnh, buồn", "Nhẹ nhàng, đơn điệu", "Ấm áp, nổi bật, năng động", "Tối và khó nhìn"], correct: 2 },
+        { q: "Khi chọn màu chữ cho trang chiếu cần chú ý điều gì?", options: ["Không cần quan tâm đến màu nền", "Chọn màu chữ giống màu nền", "Chỉ dùng màu đen", "Chọn màu chữ có độ tương phản cao với màu nền"], correct: 3 },
+        { q: "Thông tin trong đầu trang và chân trang của bài trình chiếu thường gồm gì?", options: ["Nội dung chi tiết của bài", "Tên người trình chiếu, tiêu đề, số trang", "Hình ảnh minh họa", "Các đoạn văn dài"], correct: 1 },
+        { q: "Việc thêm đầu trang, chân trang và số trang vào bài trình chiếu nhằm mục đích gì?", options: ["Làm bài trình chiếu dài hơn", "Làm tăng dung lượng tệp", "Trang trí cho đẹp", "Cung cấp thông tin và giúp quản lí các trang chiếu"], correct: 3 },
+        { q: "Bản mẫu thường bao gồm những yếu tố nào?", options: ["Chỉ có văn bản", "Chỉ có màu sắc", "Chỉ có hình ảnh", "Bố cục, màu sắc, phông chữ, hiệu ứng"], correct: 3 },
+        { q: "Bản mẫu giúp người dùng điều gì khi tạo bài trình chiếu?", options: ["Phải tự thiết kế từ đầu", "Tiết kiệm thời gian thiết kế", "Làm tăng dung lượng tệp", "Không cần nội dung"], correct: 1 },
         { q: "Trong sơ đồ khối, hình nào biểu diễn bắt đầu và kết thúc?", options: ["Hình chữ nhật", "Hình thoi", "Hình bầu dục", "Hình tam giác"], correct: 2 },
+        { q: "Khối lệnh “lặp lại” trong chương trình dùng để làm gì?", options: ["Kết thúc chương trình", "Thực hiện một nhóm lệnh nhiều lần", "Xóa dữ liệu", "Nhập dữ liệu"], correct: 1 },
+        { q: "Trong thuật toán, bước “di chuyển 60 bước” thuộc loại gì?", options: ["Điều kiện", "Lệnh thực hiện", "Lệnh kết thúc", "Lệnh nhập"], correct: 1 },
+        { q: "Cấu trúc lặp trong thuật toán giúp gì?", options: ["Tăng dung lượng chương trình", "Lặp lại các bước nhiều lần", "Xóa dữ liệu", "Làm chậm chương trình"], correct: 1 },
+        { q: "Trong sơ đồ khối, hình thoi dùng để làm gì?", options: ["Bắt đầu", "Kết thúc", "Biểu diễn điều kiện", "Biểu diễn phép tính"], correct: 2 },
+        { q: "Khi điều kiện “lần lặp ≤ 3” sai thì chương trình sẽ làm gì?", options: ["Tiếp tục lặp", "Quay lại đầu", "Kết thúc", "Tăng giá trị"], correct: 2 },
+        { q: "Nếu tăng số lần lặp lên 4 khi vẽ tam giác đều thì hình sẽ như thế nào?", options: ["Vẫn là tam giác", "Không tạo được hình kín đúng", "Thành hình tròn", "Không thay đổi"], correct: 1 },
+        { q: "Trong Scratch, các lệnh được thực hiện theo thứ tự nào?", options: ["Ngẫu nhiên", "Từ dưới lên", "Từ trên xuống", "Từ phải sang trái"], correct: 2 },
+        { q: "Nếu không có lệnh lặp, để vẽ tam giác đều ta phải làm gì?", options: ["Không vẽ được", "Viết lệnh nhiều lần", "Dùng hình ảnh", "Tắt chương trình"], correct: 1 },
+        { q: "Vai trò của chương trình trong máy tính là gì?", options: ["Trang trí", "Điều khiển máy tính thực hiện công việc", "Lưu trữ hình ảnh", "Nghe nhạc"], correct: 1 },
+        { q: "Khi thay đổi số bước di chuyển, hình vẽ sẽ thay đổi như thế nào?", options: ["Không thay đổi", "Thay đổi kích thước cạnh", "Bị xóa", "Bị xoay"], correct: 1 },
         { q: "Hằng là gì?", options: ["Giá trị thay đổi liên tục", "Giá trị không thay đổi trong chương trình", "Một biến đặc biệt", "Một phép toán"], correct: 1 },
+        { q: "Biểu thức là gì?", options: ["Một câu lệnh điều khiển", "Sự kết hợp của biến, hằng và phép toán", "Một hình ảnh", "Một biến"], correct: 1 },
+        { q: "Phép toán cộng, trừ, nhân, chia thuộc kiểu dữ liệu nào?", options: ["Xâu kí tự", "Logic", "Số", "Hình ảnh"], correct: 2 },
         { q: "Phép toán so sánh (=, <, >) cho kết quả thuộc kiểu dữ liệu nào?", options: ["Số", "Xâu kí tự", "Logic", "Hình ảnh"], correct: 2 },
-        { q: "Trong biểu thức “2 * 3.14 * r”, thành phần nào là biến?", options: ["2", "3.14", "r", "*"], correct: 2 }
-        // ... (Tiếp tục bổ sung các câu khác từ file Word vào đây để đủ 56 câu)
+        { q: "Ví dụ nào sau đây là hằng?", options: ["x", "y", "3.14", "biến a"], correct: 2 },
+        { q: "Trong Scratch, phép toán “và (and)” dùng để làm gì?", options: ["Cộng hai số", "Ghép hai chuỗi", "Kiểm tra đồng thời hai điều kiện", "So sánh hai số"], correct: 2 },
+        { q: "Biểu thức “r * 2 * 3.14” dùng để tính gì?", options: ["Diện tích hình tròn", "Chu vi hình tròn", "Diện tích hình vuông", "Chu vi hình chữ nhật"], correct: 1 },
+        { q: "Trong biểu thức “2 * 3.14 * r”, thành phần nào là biến?", options: ["2", "3.14", "r", "*"], correct: 2 },
+        { q: "Khi thay đổi giá trị của biến, kết quả chương trình sẽ như thế nào?", options: ["Không thay đổi", "Thay đổi theo giá trị biến", "Bị lỗi", "Bị xóa"], correct: 1 }
     ];
 
     function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
 
-    function initExam() {
+    function renderQuiz() {
         const container = document.getElementById('quiz-container');
         const palette = document.getElementById('palette-container');
-        const selectedMcq = shuffle([...mcqBank]).slice(0, 12); // Bốc ngẫu nhiên 12 câu
+        const selectedMcq = shuffle([...mcqBank]).slice(0, 12); // Bốc ngẫu nhiên 12 câu làm bài kiểm tra
         
-        let html = `<div class="section-title">I. PHẦN TRẮC NGHIỆM (3.0 ĐIỂM)</div>`;
+        let html = `<div class="section-title">I. Trắc nghiệm (3.0 điểm)</div>`;
         selectedMcq.forEach((q, i) => {
             html += `
             <div class="question-card" id="q-${i+1}">
                 <div class="question-text"><span>Câu ${i+1}:</span> ${q.q}</div>
-                <div class="mcq-options grid-2">`;
+                <div class="mcq-options">`;
             q.options.forEach((opt, idx) => {
                 html += `
-                    <label class="mcq-option">
-                        <input type="radio" name="mcq_${i}" onchange="document.getElementById('pal-${i+1}').classList.add('answered')">
-                        <b>${String.fromCharCode(65+idx)}.</b> &nbsp;${opt}
-                    </label>`;
+                <label class="mcq-option">
+                    <input type="radio" name="mcq_${i}" onchange="document.getElementById('pal-${i+1}').classList.add('answered')">
+                    ${String.fromCharCode(65+idx)}. ${opt}
+                </label>`;
             });
             html += `</div></div>`;
             palette.innerHTML += `<div class="palette-btn" id="pal-${i+1}" onclick="document.getElementById('q-${i+1}').scrollIntoView({behavior:'smooth', block:'center'})">${i+1}</div>`;
         });
 
-        // Thêm phần Tự luận mẫu dựa trên file ôn tập
-        html += `<div class="section-title">II. PHẦN TỰ LUẬN (7.0 ĐIỂM)</div>
+        html += `<div class="section-title">II. Tự luận (7.0 điểm)</div>
             <div class="question-card" id="q-13">
-                <div class="question-text"><span>Câu 13:</span> Em hãy mô tả thuật toán vẽ một hình vuông có cạnh 100 bước bằng Scratch (sử dụng cấu trúc lặp).</div>
+                <div class="question-text"><span>Câu 13:</span> Em hãy trình bày sự khác biệt giữa biến và hằng. Cho ví dụ minh họa về một hằng số em đã học trong chương trình Tin học 8.</div>
+                <textarea class="essay-box" placeholder="Nhập câu trả lời..."></textarea>
+            </div>
+            <div class="question-card" id="q-14">
+                <div class="question-text"><span>Câu 14:</span> Bạn An muốn vẽ một hình vuông cạnh 100 bước trong Scratch. Em hãy giúp An mô tả thuật toán bằng cách liệt kê các bước cụ thể sử dụng cấu trúc lặp.</div>
                 <textarea class="essay-box" placeholder="Nhập câu trả lời..."></textarea>
             </div>`;
+        
         palette.innerHTML += `<div class="palette-btn" id="pal-13" onclick="document.getElementById('q-13').scrollIntoView()">13</div>`;
+        palette.innerHTML += `<div class="palette-btn" id="pal-14" onclick="document.getElementById('q-14').scrollIntoView()">14</div>`;
 
         container.innerHTML = html;
     }
 
-    let time = 45 * 60;
+    let timeLeft = 45 * 60;
     setInterval(() => {
-        if(time <= 0) return;
-        time--;
-        let m = Math.floor(time/60);
-        let s = time%60;
+        if(timeLeft <= 0) return;
+        timeLeft--;
+        let m = Math.floor(timeLeft/60);
+        let s = timeLeft%60;
         document.getElementById('timer').innerText = `${m}:${s < 10 ? '0'+s : s}`;
     }, 1000);
 
-    window.onload = initExam;
+    function submitExam() {
+        alert("Bài thi của bạn đã được gửi thành công!");
+        location.reload();
+    }
+
+    window.onload = renderQuiz;
 </script>
 </body>
 </html>
