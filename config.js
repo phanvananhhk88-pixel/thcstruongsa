@@ -6,9 +6,9 @@ const CONFIG = {
     GOOGLE_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbx-HClcAbYbGmXBaL9JSqScp7Cfj8cbVGsJ22fgenzkTv83vztmz2iJ7BdGwj6OJAh-Vg/exec",
     
     // Mật khẩu đăng nhập dành cho giáo viên
-    ADMIN_PASS: "123456",
+    ADMIN_PASS: "Hatinh2006@",
         // Năm học hiển thị
-    USER_PASS: "123456",
+    USER_PASS: "Hatinh2006@",
     // Năm học hiển thị
     SCHOOL_YEAR: "2025-2026",
     
